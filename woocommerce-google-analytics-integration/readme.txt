@@ -3,7 +3,7 @@ Contributors: woocommerce, automattic, claudiosanches, bor0, royho, laurendaviss
 Tags: woocommerce, google analytics
 Requires at least: 7.0
 Tested up to: 7.1
-Stable tag: 2.4.3
+Stable tag: 2.4.4
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -48,6 +48,14 @@ Duplicate Google Analytics code causes a conflict in tracking. Remove any other 
 
 == Changelog ==
 
+= 2.4.4 - 2026-10-20 =
+* Dev - Add shared npm scripts, a pre-commit hook, Dependabot for GitHub Actions and a Node 24 pin.
+* Dev - Declare GPL-3.0-or-later in package metadata to match the plugin header.
+* Dev - Require yoast/phpunit-polyfills 1.1.5 or newer for PHP 8.5.
+* Dev - Run the JavaScript unit tests in CI and update the README.
+* Fix - Send `add_to_cart` once, not twice, when "Redirect to the cart page after successful addition" is off.
+* Fix - Stop sending the purchase event for failed and cancelled orders, so a later successful payment for the same order is still tracked.
+
 = 2.4.3 - 2026-10-12 =
 * Fix - Report the catalog price of Composite Products instead of 0 in `view_item`, `view_item_list`, `select_content` and `add_to_cart` events.
 * Update - Bump the minimum required WooCommerce version to 11.1 and the compatibility version to 11.2.
@@ -57,11 +65,5 @@ Duplicate Google Analytics code causes a conflict in tracking. Remove any other 
 * Dev - Pin GitHub Actions and their nested dependencies to immutable commit SHAs.
 * Fix - Strip the order key and other sensitive query parameters from the page URL and referrer sent to Google Analytics, and send an explicit denied consent state for undecided visitors on opt-in sites.
 * Update GitHub Action references.
-
-= 2.4.1 - 2026-08-25 =
-* Fix - Purchase event no longer reports a false item discount in stores that enter prices inclusive of tax, and no longer drops coupon discounts for quantities above one; item price and discount are now per unit and tax-exclusive.
-* Fix - Purchase event value now sums the item prices × quantity, excluding tax and shipping as GA4 expects, instead of the gross order total.
-* Tweak - WordPress 7.1 compatibility.
-* Update - Require WordPress 7.0+.
 
 [See changelog for all versions](https://raw.githubusercontent.com/woocommerce/woocommerce-google-analytics-integration/trunk/changelog.txt).
